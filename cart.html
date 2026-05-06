@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart & Checkout — VLTG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="global.css">
+<link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+<div id="toast" role="alert" aria-live="polite">
+  <div class="t-dot"></div>
+  <span id="toast-msg">Added to cart</span>
+</div>
+
+<header id="header" class="compact">
+  <a href="index.html" class="logo">VLT<span>G</span></a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="featured.html">New Arrivals</a>
+    <a href="shop.html">Collections</a>
+    <a href="sell.html">Sell</a>
+  </nav>
+
+  <div class="header-right">
+    <button class="icon-btn" aria-label="Search">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+    </button>
+    <a href="login.html" class="auth-link" aria-label="Account"></a>
+    <a href="cart.html" class="icon-btn" id="cart-trigger" aria-label="Open cart">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 16H4L5 9z"/>
+      </svg>
+      <span id="cart-count" aria-label="Cart items">0</span>
+    </a>
+  </div>
+</header>
+
+<div style="height: 120px;"></div>
+
+<section id="cart-checkout-page">
+  <div class="page-container">
+    <div class="reveal" style="margin-bottom:48px">
+      <p class="section-label">Your Bag</p>
+      <h1 class="section-title">Review & <em>Checkout</em> <span id="cart-head-count" style="color: var(--muted);">(0)</span></h1>
+    </div>
+
+    <div class="checkout-grid">
+      <div class="cart-column">
+        <div id="cart-empty" style="display:none; flex-direction: column; align-items: center; padding: 80px 20px; background: #0a0a0a; border: 1px solid var(--border);">
+          <p style="margin-bottom: 24px; color: var(--muted); font-size: 16px;">Your bag is currently empty.</p>
+          <a href="shop.html" class="btn-primary" style="display:inline-flex; width:auto; text-decoration: none;">Return to Shop</a>
+        </div>
+        
+        <div id="cart-items-list" class="cart-items-container">
+          <div id="cart-foot" style="display:none; margin-top: 30px; border-top: 1px solid var(--border); padding-top: 20px;">
+            <div class="subtotal-row" style="display:flex; justify-content:space-between; align-items:center; font-family:'Bebas Neue', sans-serif; font-size:28px; letter-spacing:1px;">
+              <span>Subtotal</span>
+              <span id="cart-total">₹0</span>
+            </div>
+            <p style="color:var(--muted); font-size:14px; margin-top:8px;">Taxes and shipping calculated at checkout.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-column">
+        <form id="checkout-form" class="checkout-form">
+          <h2 style="font-family:'Bebas Neue', sans-serif; font-size:24px; letter-spacing:1px; margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 12px;">Delivery Information</h2>
+          
+          <div class="form-row">
+            <input type="email" placeholder="Email Address" required class="form-input" style="width:100%">
+          </div>
+          
+          <h2 style="font-family:'Bebas Neue', sans-serif; font-size:24px; letter-spacing:1px; margin-top: 40px; margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 12px;">Shipping Address</h2>
+          <div class="form-row flex-row">
+            <input type="text" placeholder="First Name" required class="form-input">
+            <input type="text" placeholder="Last Name" required class="form-input">
+          </div>
+          <div class="form-row">
+            <input type="text" placeholder="Address" required class="form-input" style="width:100%">
+          </div>
+          <div class="form-row flex-row">
+            <input type="text" placeholder="City" required class="form-input">
+            <input type="text" placeholder="Postal Code" required class="form-input">
+          </div>
+          
+          <h2 style="font-family:'Bebas Neue', sans-serif; font-size:24px; letter-spacing:1px; margin-top: 40px; margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 12px;">Payment</h2>
+          <div class="form-row">
+            <input type="text" placeholder="Card Number" required class="form-input" style="width:100%">
+          </div>
+          <div class="form-row flex-row">
+            <input type="text" placeholder="Expiration (MM/YY)" required class="form-input">
+            <input type="text" placeholder="Security Code" required class="form-input">
+          </div>
+
+          <button type="submit" class="btn-primary checkout-btn">Complete Order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="margin-top: 100px;">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">VLT<span>G</span></div>
+      <p>Independent luxury streetwear collective, rooted in urban culture since 2013. No compromises.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="featured.html">New Arrivals</a></li>
+        <li><a href="shop.html">Collections</a></li>
+        <li><a href="archive.html">Archive</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Stockists</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="sell.html">Sell on VLTG</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">Sizing</a></li>
+        <li><a href="#">Shipping</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 VLTG Collective. All rights reserved.</span>
+    <span>Designed for those who move differently.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  document.getElementById('checkout-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Check login
+    const currentUser = JSON.parse(localStorage.getItem('vltg_user'));
+    if (!currentUser) {
+      window.location.href = 'login.html?mode=signup';
+      return;
+    }
+
+    if (cart.length === 0) {
+      showToast('Cart is empty. Please add items.');
+      return;
+    }
+    showToast('Processing order...');
+    const btn = this.querySelector('button[type="submit"]');
+    btn.textContent = 'Processing...';
+    btn.style.opacity = '0.7';
+    
+    setTimeout(() => {
+      cart = [];
+      saveCart();
+      renderCart();
+      showToast('Order Complete! Redirecting...');
+      setTimeout(() => window.location.href = 'index.html', 2000);
+    }, 1500);
+  });
+</script>
+</body>
+</html>

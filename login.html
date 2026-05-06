@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth — Voltage Collective</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<section id="auth-page">
+  <div class="auth-image">
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=85&w=1200&auto=format&fit=crop" alt="Streetwear model" loading="eager">
+    <div class="auth-image-overlay"></div>
+  </div>
+
+  <div class="auth-content">
+    <a href="#" id="skip-btn" class="back-home">
+      Skip for now
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+      </svg>
+    </a>
+
+    <div class="auth-header">
+      <a href="index.html" class="logo">VLT<span>G</span></a>
+      <h1 class="auth-title">Welcome</h1>
+      <p class="auth-subtitle">Enter the collective to manage your archive.</p>
+    </div>
+
+    <div class="auth-toggle">
+      <button class="auth-toggle-btn active" data-target="login-form">Login</button>
+      <button class="auth-toggle-btn" data-target="signup-form">Create Account</button>
+    </div>
+
+    <form id="login-form" class="auth-form active">
+      <div id="login-error" class="auth-error"></div>
+      
+      <div class="input-group">
+        <label for="login-email">Email Address</label>
+        <input type="email" id="login-email" placeholder="Enter your email" required>
+      </div>
+      <div class="input-group">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" placeholder="Enter your password" required>
+      </div>
+      
+      <button type="submit" class="auth-btn">Sign In</button>
+    </form>
+
+    <form id="signup-form" class="auth-form">
+      <div id="signup-error" class="auth-error"></div>
+      <div id="signup-success" class="auth-success"></div>
+
+      <div class="input-group">
+        <label for="signup-name">Full Name</label>
+        <input type="text" id="signup-name" placeholder="Pranit Kalra" required>
+      </div>
+      <div class="input-group">
+        <label for="signup-email">Email Address</label>
+        <input type="email" id="signup-email" placeholder="pranit07@gmail.com" required>
+      </div>
+      <div class="input-group">
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" placeholder="Enter password" required>
+      </div>
+      
+      <button type="submit" class="auth-btn">Join Collective</button>
+    </form>
+
+  </div>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>

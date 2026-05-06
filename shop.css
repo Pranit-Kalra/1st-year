@@ -1,0 +1,177 @@
+  #shop { padding-top: 80px; }
+  .shop-inner { display: flex; gap: 32px; }
+
+  .filter-sidebar {
+    width: 220px; flex-shrink: 0;
+    position: sticky; top: 100px;
+    height: fit-content;
+    background: rgba(17,17,17,0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-bdr);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+  }
+  .filter-section { margin-bottom: 28px; }
+  .filter-section:last-child { margin-bottom: 0; }
+  .filter-title {
+    font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 14px; font-weight: 500;
+  }
+  .filter-pill-group { display: flex; flex-wrap: wrap; gap: 6px; }
+  .filter-pill {
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-size: 11px; color: var(--muted);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .filter-pill:hover, .filter-pill.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(200,255,0,0.05);
+  }
+  .price-slider-wrap { padding: 8px 0; }
+  .price-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%; height: 2px;
+    background: linear-gradient(to right, var(--accent) 60%, var(--border) 60%);
+    outline: none; border-radius: 2px;
+  }
+  .price-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px; height: 14px;
+    background: var(--accent); border-radius: 50%;
+  }
+  .price-labels {
+    display: flex; justify-content: space-between;
+    font-size: 11px; color: var(--muted); margin-top: 10px;
+  }
+
+  .product-grid-wrap { flex: 1; }
+  .grid-top {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 32px;
+  }
+  .grid-count { font-size: 12px; color: var(--muted); }
+  .sort-select {
+    appearance: none; background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted); font-family: var(--font-body);
+    font-size: 11px; letter-spacing: 0.1em;
+    padding: 8px 32px 8px 14px; border-radius: var(--radius);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23666'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center;
+    outline: none;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .product-card {
+    position: relative; border-radius: var(--radius-lg);
+    overflow: hidden; background: var(--surface);
+    border: 1px solid var(--border);
+    opacity: 0; transform: translateY(32px);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .product-card.visible {
+    animation: cardEnter 0.7s var(--ease) forwards;
+  }
+  .product-card:hover { border-color: rgba(255,255,255,0.14); }
+
+  .card-img {
+    aspect-ratio: 3/4; position: relative; overflow: hidden;
+  }
+  .card-img img {
+    transition: transform 0.7s var(--ease);
+    filter: brightness(0.85) contrast(1.05);
+  }
+  .product-card:hover .card-img img { transform: scale(1.05); }
+
+  .card-badge {
+    position: absolute; top: 12px; left: 12px; z-index: 2;
+    padding: 3px 10px;
+    background: var(--red); color: #fff;
+    font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+    border-radius: 2px;
+  }
+  .card-badge.new { background: var(--accent); color: var(--bg); }
+  .card-badge.ltd { background: rgba(255,255,255,0.12); color: var(--text); }
+
+  .card-quick-buy {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+    padding: 20px 16px 16px;
+    background: linear-gradient(transparent, rgba(8,8,8,0.95));
+    transform: translateY(100%);
+    transition: transform 0.4s var(--ease);
+  }
+  .product-card:hover .card-quick-buy { transform: translateY(0); }
+
+  .size-row {
+    display: flex; gap: 6px; margin-bottom: 10px;
+  }
+  .size-chip {
+    padding: 4px 9px;
+    border: 1px solid rgba(255,255,255,0.15);
+    font-size: 10px; border-radius: 2px; color: var(--muted);
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  .size-chip:hover, .size-chip.active {
+    border-color: var(--accent); color: var(--accent);
+    background: rgba(200,255,0,0.07);
+  }
+
+  .atc-btn {
+    width: 100%; padding: 11px;
+    background: var(--accent); color: var(--bg);
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500;
+    border-radius: var(--radius);
+    transition: background 0.15s, transform 0.1s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    position: relative; overflow: hidden;
+  }
+  .atc-btn:hover { background: var(--accent-dk); }
+  .atc-btn:active { transform: scale(0.97); }
+  .atc-btn.adding { background: #2a2a2a; color: var(--accent); }
+
+  .atc-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    transform: scale(0);
+    animation: ripple 0.5s linear;
+    pointer-events: none;
+  }
+
+  .card-info { padding: 16px 16px 20px; }
+  .card-brand {
+    font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 4px;
+  }
+  .card-name {
+    font-family: var(--font-disp);
+    font-size: 17px; font-weight: 300; line-height: 1.2;
+  }
+  .card-price-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 10px;
+  }
+  .card-price { font-size: 14px; color: var(--accent); font-weight: 500; }
+  .card-price-old {
+    font-size: 12px; color: var(--muted);
+    text-decoration: line-through; margin-left: 6px;
+  }
+  .card-wishlist {
+    width: 28px; height: 28px;
+    border: 1px solid var(--border); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s, background 0.2s;
+    color: var(--muted);
+  }
+  .card-wishlist:hover { border-color: var(--red); color: var(--red); background: rgba(255,51,51,0.06); }
+  .card-wishlist svg { width: 13px; height: 13px; }

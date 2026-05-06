@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details — VLTG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="product.css">
+</head>
+<body>
+
+<div id="toast" role="alert" aria-live="polite">
+  <div class="t-dot"></div>
+  <span id="toast-msg">Added to cart</span>
+</div>
+
+<header id="header">
+  <a href="index.html" class="logo">VLT<span>G</span></a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="featured.html">New Arrivals</a>
+    <a href="shop.html">Collections</a>
+    <a href="sell.html">Sell</a>
+  </nav>
+
+  <div class="header-right">
+    <button class="icon-btn" aria-label="Search">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+    </button>
+    <a href="login.html" class="auth-link" aria-label="Account"></a>
+    <a href="cart.html" class="icon-btn" id="cart-trigger" aria-label="Open cart">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 16H4L5 9z"/>
+      </svg>
+      <span id="cart-count" aria-label="Cart items">0</span>
+    </a>
+  </div>
+</header>
+
+<div style="height: 68px;"></div>
+<section class="product-detail-section">
+  <div class="product-split" id="product-container">
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">VLT<span>G</span></div>
+      <p>Independent luxury streetwear collective, rooted in urban culture since 2013. No compromises.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="featured.html">New Arrivals</a></li>
+        <li><a href="shop.html">Collections</a></li>
+        <li><a href="archive.html">Archive</a></li>
+        <li><a href="#">Sale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Stockists</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="sell.html">Sell on VLTG</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">Sizing</a></li>
+        <li><a href="#">Shipping</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 VLTG Collective. All rights reserved.</span>
+    <span>Designed for those who move differently.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'));
+    
+    // In case no ID is provided, fallback to 1
+    const pId = isNaN(productId) ? 1 : productId;
+    
+    // Find product from the products array in script.js
+    const product = products.find(p => p.id === pId) || products[0];
+
+    const container = document.getElementById('product-container');
+    
+    const origHtml = product.orig ? `<span class="p-price-old">₹${product.orig}</span>` : '';
+    const sizesHtml = product.sizes.map((s, i) => `<div class="size-box ${i === 0 ? 'active' : ''}" data-size="${s}">${s}</div>`).join('');
+
+    container.innerHTML = `
+      <div class="product-gallery">
+        <div class="main-image">
+          <img src="${product.img}" alt="${product.name}">
+        </div>
+      </div>
+      
+      <div class="product-info">
+        <div class="p-brand">${product.brand}</div>
+        <h1 class="p-name">${product.name}</h1>
+        
+        <div class="p-price-row">
+          <span class="p-price">₹${product.price}</span>
+          ${origHtml}
+        </div>
+        
+        <p class="p-desc">
+          Engineered for the urban environment. The ${product.name} blends technical fabrication with contemporary silhouettes. Features articulated paneling, premium hardware, and a fit designed for unrestricted movement. Sourced and constructed to the highest standards of the VLTG collective.
+        </p>
+        
+        <div class="size-selector">
+          <div class="size-header">
+            <span>Select Size</span>
+            <span class="size-guide-link">Size Guide</span>
+          </div>
+          <div class="size-grid">
+            ${sizesHtml}
+          </div>
+        </div>
+        
+        <div class="p-actions">
+          <button class="btn-atc" id="pdp-atc">
+            Add to Cart
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </button>
+          <button class="btn-wishlist" aria-label="Add to wishlist">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="p-accordion">
+          <div class="acc-item">
+            <div class="acc-header">Details & Care <span>+</span></div>
+            <div class="acc-content">
+              - 100% Technical Nylon<br>
+              - Water-resistant finish<br>
+              - YKK Excella zippers<br>
+              - Wash cold, hang dry<br>
+              - Do not iron or bleach
+            </div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-header">Shipping & Returns <span>+</span></div>
+            <div class="acc-content">
+              Complimentary express shipping on all orders over ₹20000. Returns accepted within 14 days of delivery in unworn condition with original tags attached.
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Size Selection Logic
+    let selectedSize = product.sizes[0] || 'One Size';
+    const sizeBoxes = container.querySelectorAll('.size-box');
+    sizeBoxes.forEach(box => {
+      box.addEventListener('click', () => {
+        sizeBoxes.forEach(b => b.classList.remove('active'));
+        box.classList.add('active');
+        selectedSize = box.dataset.size;
+      });
+    });
+
+    // Add to Cart Logic
+    const atcBtn = document.getElementById('pdp-atc');
+    atcBtn.addEventListener('click', () => {
+      // Use the addToCart function from script.js
+      if(typeof addToCart === 'function') {
+        addToCart(product, selectedSize, atcBtn);
+      }
+    });
+
+    // Accordion Logic
+    const accHeaders = container.querySelectorAll('.acc-header');
+    accHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const span = header.querySelector('span');
+        if(content.classList.contains('open')) {
+          content.classList.remove('open');
+          span.textContent = '+';
+        } else {
+          content.classList.add('open');
+          span.textContent = '-';
+        }
+      });
+    });
+
+    // Wishlist Logic
+    const wishBtn = container.querySelector('.btn-wishlist');
+    wishBtn.addEventListener('click', () => {
+      const isFilled = wishBtn.querySelector('svg').getAttribute('fill') !== 'none';
+      wishBtn.querySelector('svg').setAttribute('fill', isFilled ? 'none' : '#FF3333');
+      wishBtn.querySelector('svg').setAttribute('stroke', isFilled ? 'currentColor' : '#FF3333');
+      
+      if(typeof showToast === 'function') {
+        showToast(isFilled ? 'Removed from wishlist' : `${product.name} saved`);
+      }
+    });
+    
+    // Update document title
+    document.title = `${product.name} — VLTG`;
+  });
+</script>
+
+</body>
+</html>

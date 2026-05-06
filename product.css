@@ -1,0 +1,237 @@
+.product-detail-section {
+  padding: 140px 48px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.product-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .product-split {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 100px 24px 60px;
+  }
+}
+
+.product-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 100px;
+}
+
+.main-image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: var(--surface2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.main-image:hover img {
+  transform: scale(1.05);
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-brand {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.p-name {
+  font-family: var(--font-disp);
+  font-size: 48px;
+  line-height: 1.1;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.p-price-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.p-price {
+  font-size: 24px;
+  color: var(--text);
+}
+
+.p-price-old {
+  font-size: 18px;
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.p-desc {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.size-selector {
+  margin-bottom: 40px;
+}
+
+.size-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.size-guide-link {
+  color: var(--text);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.size-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.size-box {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.size-box:hover {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.size-box.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+  font-weight: 500;
+}
+
+.p-actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.btn-atc {
+  flex: 1;
+  padding: 20px;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-atc:hover {
+  background: var(--accent-dk);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(200,255,0,0.3);
+}
+
+.btn-wishlist {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-wishlist:hover {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.btn-wishlist svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5;
+}
+
+.p-accordion {
+  border-top: 1px solid var(--border);
+}
+
+.acc-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.acc-header {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.acc-content {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  padding-bottom: 24px;
+  display: none;
+}
+
+.acc-content.open {
+  display: block;
+  animation: fadeIn 0.3s var(--ease);
+}
